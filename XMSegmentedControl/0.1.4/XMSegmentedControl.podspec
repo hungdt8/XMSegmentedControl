@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   s.screenshots      = "https://dl.dropboxusercontent.com/u/72507896/XMSegmentedControlScreenshots/screenshot1.png"
   s.license          = 'MIT'
   s.author           = { "xaviermerino" => "xaviermerino@gmail.com" }
-  s.source           = { :git => "https://github.com/xaviermerino/XMSegmentedControl.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/hungdt8/XMSegmentedControl.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '8.0'
