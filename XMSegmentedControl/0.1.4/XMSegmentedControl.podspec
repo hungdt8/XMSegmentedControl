@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
                         This pod allows creating a segmented control with Icons, Text or Icons + Text segments. It is fully customizable and supports several in-built styles for displaying the selected segment.
                        DESC
 
-  s.homepage         = "https://github.com/xaviermerino/XMSegmentedControl"
+  s.homepage         = "https://github.com/hungdt8/XMSegmentedControl"
   s.screenshots      = "https://dl.dropboxusercontent.com/u/72507896/XMSegmentedControlScreenshots/screenshot1.png"
   s.license          = 'MIT'
   s.author           = { "xaviermerino" => "xaviermerino@gmail.com" }
