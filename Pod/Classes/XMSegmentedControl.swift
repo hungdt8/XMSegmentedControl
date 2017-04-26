@@ -93,8 +93,13 @@ open class XMSegmentedControl: UIView {
         }
     }
     
-    /// Changes the font color or the icon tint for the selected segment.
     @IBInspectable open var saperatorColor = UIColor.clear {
+        didSet {
+            self.update()
+        }
+    }
+    
+    @IBInspectable open var disableColor = UIColor.lightGray {
         didSet {
             self.update()
         }
@@ -181,19 +186,27 @@ open class XMSegmentedControl: UIView {
                         if $0.tag == self.selectedSegment {
                             $0.tintColor = self.highlightTint
                             $0.setTitleColor(highlightTint, for: UIControlState())
+                            $0.backgroundColor = UIColor.clear
                             self.highlightView.frame.origin.x = $0.frame.origin.x
                         } else {
                             $0.tintColor = self.tintIcon
                             $0.setTitleColor(tint, for: UIControlState())
+                            
+                            let isDisableItem = disableItems.contains($0.tag)
+                            $0.backgroundColor = isDisableItem ? disableColor : UIColor.clear
                         }
                     }
                 case .text:
                     ((self.subviews.filter(isUIButton)) as! [UIButton]).forEach {
                         if $0.tag == self.selectedSegment {
                             $0.setTitleColor(self.highlightTint, for: UIControlState())
+                            $0.backgroundColor = UIColor.clear
                             self.highlightView.frame.origin.x = $0.frame.origin.x
                         } else {
                             $0.setTitleColor(self.tint, for: UIControlState())
+                            
+                            let isDisableItem = disableItems.contains($0.tag)
+                            $0.backgroundColor = isDisableItem ? disableColor : UIColor.clear
                         }
                     }
                 }
@@ -206,6 +219,12 @@ open class XMSegmentedControl: UIView {
             } else {
                 select()
             }
+        }
+    }
+    
+    open var disableItems = [Int]() {
+        didSet {
+            self.update()
         }
     }
     
@@ -359,6 +378,10 @@ open class XMSegmentedControl: UIView {
                     layer.frame = CGRect(x: frame.width - 1 , y: 1, width: 1, height: frame.height - 2)
                     tab.layer.addSublayer(layer)
                 }
+                
+                let isDisableTab = disableItems.contains(i)
+                tab.isEnabled = !isDisableTab
+                tab.backgroundColor = isDisableTab ? disableColor : UIColor.clear
             }
         }
         
