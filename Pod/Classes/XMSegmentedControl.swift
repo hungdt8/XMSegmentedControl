@@ -319,6 +319,8 @@ open class XMSegmentedControl: UIView {
                 let frame = CGRect(x: starting + (CGFloat(i) * width), y: 0, width: width, height: height)
                 let tab = UIButton(type: UIButtonType.system)
                 tab.frame = frame
+                tab.titleLabel?.adjustsFontSizeToFitWidth = true
+                tab.titleLabel?.numberOfLines = 1
                 
                 switch contentType {
                 case .icon:
